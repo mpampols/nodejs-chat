@@ -53,7 +53,7 @@ $(function() {
     };
 
     var addMessage = function(nickname, message) {
-        $messages.append($("<li><img src='img/no-avatar-40-boy.png' />" + nickname + ": " + message + "</li>"))
+        $messages.append($("<p>&lt;" + nickname + "&gt; " + message + "</p>"))
     };
 
 });
