@@ -2,7 +2,7 @@ var express = require('express')
 var app = express.createServer();
 var io = require('socket.io').listen(app);
 
-var PORT = 8080;
+var PORT = process.env.PORT || 8080;
 
 app.listen(PORT, function() {
     console.log("Listening on port " + PORT)
