@@ -1,5 +1,5 @@
 {
-    "name": "mpampols nodejs test chat",
+    "name": "MpampolsNodejsTestChat",
     "version": "0.1",
     "dependencies": {
         "express": "latest",
