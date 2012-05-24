@@ -1,0 +1,17 @@
+extends layout
+
+block header
+    div#logo
+        p YoteConozco: Real-time chat between N users
+
+block content
+    div#login
+        p Nickname:
+            input#nickname
+
+    div#chat
+        ol#messages
+
+        div 
+            input#message(type='text')
+            input#submit-message(type='submit', value="submit")
