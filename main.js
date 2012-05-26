@@ -18,7 +18,7 @@ app.configure(function() {
 
 io.configure(function() {
     io.disable('log');
-    io.set('transports', ['websocket', 'xhr-polling']);
+    io.set('transports', ['xhr-polling']);
 });
 
 app.get('/', function(request, response) {
