@@ -66,6 +66,11 @@ b
     font-weight:bold;
 }
 
+#chat
+{
+    display:none;
+}
+
 #container
 {
     padding: 30px;

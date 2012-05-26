@@ -6,13 +6,10 @@ $(function() {
     var socket = io.connect('/');
 
     socket.on('connect', function() {
-        console.log('Connected with socket');
-
         init();
     });
 
     var init = function() {
-        $chat.hide();
         $("#btn-enterroom").click(function(e) {
             if ( $.trim( $('#nickname').val() ) == '' ) {
                 alert('Please enter your nickname.');
