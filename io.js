@@ -2,11 +2,7 @@ module.exports = function(io) {
 
     io.sockets.on('connection', function(socket) {
                     
-        console.log("Client connected");
-
         socket.on('set_nickname', function(nickname, callback) {
-            console.log('Trying to set nickname ' + nickname);
-
             var isAvailable = isNicknameAvailable(nickname);
 
             if (isAvailable) {
@@ -27,7 +23,7 @@ module.exports = function(io) {
                 }
             }
             
-            sendMessage("SERVER", "User " + nickname + " connected.");
+            sendMessage("SERVER", "User <b>" + nickname + "</b> connected.");
         });
 
         socket.on('message', function(message) {
