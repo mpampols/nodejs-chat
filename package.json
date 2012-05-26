@@ -1,6 +1,6 @@
 {
-    "name": "MpampolsNodejsTestChat",
-    "version": "0.0.1",
+    "name": "MpampolsNodejsChat",
+    "version": "0.0.2",
     "dependencies": {
         "express": "latest",
         "jade": "latest",

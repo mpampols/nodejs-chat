@@ -12,22 +12,21 @@ $(function() {
     });
 
     var init = function() {
-        $("#nickname").keyup(function(e) {
-            var code = e.which || e.keyCode;
-
-            if (code == 13) {
-                setNickname($(this).val());
+        $chat.hide();
+        $("#btn-enterroom").click(function(e) {
+            if ( $.trim( $('#nickname').val() ) == '' ) {
+                alert('Please enter your nickname.');
+            } else {
+                setNickname( $.trim($("#nickname").val()) );
             }
+            e.preventDefault();
         });  
-
-        $chat.hide();      
     };
 
     var setNickname = function(nickname) {
         socket.emit('set_nickname', nickname, function(is_available) {
             if (is_available) {
                 console.log('Nickname' + nickname + " is available.");
-
                 setUpChat(nickname)
             } else {
                 console.log('Nickname' + nickname + " is not available.");
@@ -39,13 +38,28 @@ $(function() {
         $login.hide();
         $chat.show();
 
-        $("#submit-message").click(function() {
+        $("#btn-submitmessage").click(function(e) {
             sendMessage($("#message").val());
+            $("#message").val('');
+            e.preventDefault();
+        });
+
+        socket.on('user_new', function() {
+            $("#clients-box ul").text("");
+        });
+
+        socket.on('user_connected', function(userid, data) {
+            $("#clients-box ul").append("<li class=\"" + userid + "\">" + data + "</li>");
+        });
+
+        socket.on('user_disconnected', function(userid) {
+            $("#clients-box ul li." + userid).remove();
         });
 
         socket.on('message', function(nickname, message) {
             addMessage(nickname, message);
         });
+
     };
 
     var sendMessage = function(msg) {
@@ -53,7 +67,8 @@ $(function() {
     };
 
     var addMessage = function(nickname, message) {
-        $messages.append($("<p>&lt;" + nickname + "&gt; " + message + "</p>"))
+        $messages.append($("<p><b>" + nickname + "</b>: " + message + "</p>"))
+        $("#messages").scrollTop($("#messages")[0].scrollHeight);
     };
 
 });

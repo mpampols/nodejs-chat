@@ -1,11 +1,12 @@
 doctype 5
 html
     head
-
         script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js');
         script(src='/js/chat.js');
         script(src='/socket.io/socket.io.js')
+        link(rel='stylesheet', href='/css/main.css');
+    
     body
         #container
-        block header
-        block content
+            block header
+            block content

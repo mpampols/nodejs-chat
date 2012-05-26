@@ -2,16 +2,28 @@ extends layout
 
 block header
     div#logo
-        p node.js chat in heroku
+        h1 Chat with node.js in heroku using pusher.
 
 block content
     div#login
-        p Nickname:
-            input#nickname
+        form(name="login")
+            | Nickname:
+            input(type="text", id="nickname")
+            input(type="submit", value="Enter room", id="btn-enterroom")
 
     div#chat
-        div#messages
+        div#messages-box
+            div#messages
+            div 
+                form(name="message")
+                    input(type='text', id="message")
+                    input(type='submit', value="Send", id="btn-submitmessage")
 
-        div 
-            input#message(type='text')
-            input#submit-message(type='submit', value="submit")
+        div#server-box
+            div#server
+
+        div#clients-box
+            div#title
+                h2 Users:
+            div#clients
+                ul

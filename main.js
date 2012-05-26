@@ -1,11 +1,11 @@
 var express = require('express')
-var app = express.createServer();
-var io = require('socket.io').listen(app);
 
+var app = express.createServer(express.logger());
+var io = require('socket.io').listen(app);
 var PORT = process.env.PORT || 8080;
 
 app.listen(PORT, function() {
-    console.log("Listening on port " + PORT)
+    console.log("Listening on " + PORT)
 });
 
 app.configure(function() {
@@ -18,6 +18,7 @@ app.configure(function() {
 
 io.configure(function() {
     io.disable('log');
+    io.set('transports', ['websocket', 'xhr-polling']);
 });
 
 app.get('/', function(request, response) {
